@@ -1,5 +1,6 @@
 import _ from 'lodash';
 import React, {Component} from 'react';
+import {Link} from "react-router-dom";
 import Book from "./Book";
 import * as BooksAPI from "./BooksAPI";
 
@@ -26,7 +27,6 @@ class Searcher extends Component {
       return;
     }
     BooksAPI.search(query, 15).then(books => {
-
       if (books.error) {
         this.setState(() => ({error: books.error, books: []}));
       } else {
@@ -47,7 +47,7 @@ class Searcher extends Component {
     return (
       <div className="search-books">
         <div className="search-books-bar">
-          <a className="close-search" onClick={() => this.props.onCloseSearch()}>Close</a>
+          <Link to={'/'} className="close-search">Close</Link>
           <div className="search-books-input-wrapper">
             {/*
                   NOTES: The search from BooksAPI is limited to a particular set of search terms.
