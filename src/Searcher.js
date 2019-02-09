@@ -26,11 +26,18 @@ class Searcher extends Component {
       this.setState(() => ({error: '', books: []}));
       return;
     }
-    BooksAPI.search(query, 15).then(books => {
-      if (books.error) {
-        this.setState(() => ({error: books.error, books: []}));
+    BooksAPI.search(query, 15).then(result => {
+      if (result.error) {
+        this.setState(() => ({error: result.error, books: []}));
       } else {
-        this.setState({books});
+        this.setState(currentState => ({
+          books: result.map(b => {
+              const foundBook = this.props.books.find(book => b.id === book.id)
+              foundBook && (b.shelf = foundBook.shelf);
+              return b;
+            }
+          )
+        }));
       }
     });
   };
