@@ -1,10 +1,15 @@
 import _ from 'lodash';
+import PropTypes from 'prop-types';
 import React, {Component} from 'react';
 import {Link} from "react-router-dom";
 import Book from "./Book";
 import * as BooksAPI from "./BooksAPI";
 
 class Searcher extends Component {
+
+  static propTypes = {
+    books: PropTypes.array.isRequired
+  };
 
   state = {
     books: [],
@@ -17,7 +22,6 @@ class Searcher extends Component {
   }
 
   handleSearch = (query) => {
-    console.log('Query: ', query);
     this.search(query.trim());
   };
 

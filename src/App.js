@@ -19,9 +19,7 @@ class BooksApp extends React.Component {
   }
 
   onChangeShelf = (book, shelf) => {
-    console.log(`move ${book.id} to shelf ${shelf}`);
     BooksAPI.update(book, shelf).then(res => {
-      console.log(res);
       this.setState(currentState => {
         let books = currentState.books;
         if ('none' === shelf) {

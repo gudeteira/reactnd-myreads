@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import BookActions from './BookActions';
 
@@ -28,5 +29,8 @@ const Book = () => ({
     );
   }
 });
-
+Book.propTypes = {
+  book: PropTypes.object.isRequired,
+  onChangeShelf: PropTypes.func.isRequired
+}
 export default Book;

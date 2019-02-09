@@ -1,10 +1,17 @@
+import PropTypes from "prop-types";
 import React, {Component} from "react";
 
 class BookActions extends Component {
 
+  static propTypes = {
+    book: PropTypes.object.isRequired,
+    onChangeShelf: PropTypes.func.isRequired
+  };
+
   state = {
     value: this.props.book.shelf
   };
+
   handleOnChange = (e) => {
     const value = e.target.value;
     this.setState({value: value});

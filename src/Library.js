@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import {Link} from "react-router-dom";
 import BookShelf from './Bookshelf';
@@ -31,5 +32,10 @@ const Library = (props) => ({
     )
   }
 });
+
+Library.propTypes = {
+  books: PropTypes.array.isRequired,
+  onChangeShelf: PropTypes.func.isRequired
+}
 
 export default Library;
