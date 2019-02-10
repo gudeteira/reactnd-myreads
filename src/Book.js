@@ -11,7 +11,7 @@ const Book = () => ({
       width: 128,
       height: 193
     };
-    if (book.imageLinks) {
+    if (null != book.imageLinks && book.imageLinks) {
       bookCoverStyle['backgroundImage'] = `url(${book.imageLinks.thumbnail})`;
     }
 
