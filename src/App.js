@@ -1,5 +1,5 @@
 import React from 'react';
-import {Route} from "react-router-dom";
+import {Redirect, Route, Switch} from "react-router-dom";
 import './App.css';
 import * as BooksAPI from './BooksAPI'
 import Library from './Library'
@@ -43,12 +43,18 @@ class BooksApp extends React.Component {
   render() {
     return (
       <div className="app">
-        <Route path={'/'} exact render={() => (
-          <Library books={this.state.books} onChangeShelf={this.onChangeShelf}/>
-        )}/>
-        <Route path={'/search'} render={() => (
-          <Searcher books={this.state.books} onChangeShelf={this.onChangeShelf}/>
-        )}/>
+        <Switch>
+          <Route path={'/'} exact render={() => (
+            <Library books={this.state.books} onChangeShelf={this.onChangeShelf}/>
+          )}/>
+          <Route path={'/search'} render={() => (
+            <Searcher books={this.state.books} onChangeShelf={this.onChangeShelf}/>
+          )}/>
+          <Route path={'/404'} render={() => (
+            <h1>Oops, What you are looking for is not here!</h1>
+          )}/>
+          <Redirect from='*' to='/404'/>
+        </Switch>
       </div>
     )
   }
